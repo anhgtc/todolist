@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <input type="text" v-model="newTask">
-    <button @click="tasks.push({content: newTask, done: false})">Add</button>
-    <div v-for="(task,index) in tasks" :key="index">
-      <input type="checkbox" v-model="task.done">
-      <span :class="{done: task.done}">{{task.content}}</span>
-    </div>
+    <h1> TO DO LIST </h1>
+    <ToDoList :newTodo="newTodo" :editting="editting" />
   </div>
 </template>
-<script>
-export default {
-  data(){
-    return {
-      newTask:'',
-      tasks: []
-    }
 
+<script>
+import ToDoList from './components/ToDoList.vue'
+
+export default {
+  name: 'App',
+  components: {
+    ToDoList
   }
 }
 </script>
 
 <style>
-.done {
-  text-decoration: line-through;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
